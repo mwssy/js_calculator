@@ -23,6 +23,11 @@ class Calculator{
         this.$previousPreview.textContent = `${this.$currentPreview.textContent} ${operation}`
         this.$currentPreview.textContent = ''
     }
+
+    onEqual(){
+        this.$previousPreview.textContent = ''
+        //this.$currentPreview.textContent = 
+    }
 }
 
 // 값 표시
@@ -64,6 +69,7 @@ $operations.forEach(($operation) => {
                 cal.onPressOperation("/")
                 break;
             case $equal:
+                cal.onEqual()
                 break;
             default:
                 break;
