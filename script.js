@@ -7,10 +7,22 @@ const cal = new Calculator()
 */
 
 class Calculator{
+    $previousPreview
+    $currentPreview
 
+    constructor($previousPreview, $currentPreview){      //생성자?
+        this.$previousPreview = $previousPreview
+        this.$currentPreview = $currentPreview
+    }
+
+    onPressNumber(number){
+        this.$currentPreview.textContent += number
+    }
+
+    onPressOperation(operation){
+        this.$currentPreview.textContent += operation
+    }
 }
-
-const cal = new Calculator()
 
 // 값 표시
 const $previousPreview = document.querySelector('[data-previous-preview]')
@@ -26,14 +38,16 @@ const $divide = document.querySelector('[data-btn-divide]')
 const $numbers = document.querySelectorAll('[data-btn-number]')
 const $operations = document.querySelectorAll('[data-btn-operation]')
 
+const cal = new Calculator($previousPreview, $currentPreview)
+
 $numbers.forEach(($numbers) => {
     $numbers.addEventListener("click", (e) => {
-        console.log(e.target.textContent)
+        cal.onPressNumber(e.target.textContent)
     })
 })
 
 $operations.forEach(($operations) => {
     $operations.addEventListener("click", (e) => {
-        console.log(e.target.textContent)
+        cal.onPressOperation(e.target.textContent)
     })
 })
