@@ -20,9 +20,8 @@ class Calculator{
     }
 
     onPressOperation(operation){
-        if(operation !== "="){
-            this.$currentPreview.textContent += operation
-        }
+        this.$previousPreview.textContent = `${this.$currentPreview.textContent} ${operation}`
+        this.$currentPreview.textContent = ''
     }
 }
 
@@ -35,6 +34,7 @@ const $plus = document.querySelector('[data-btn-plus]')
 const $minus = document.querySelector('[data-btn-minus]')
 const $multiply = document.querySelector('[data-btn-multiply]')
 const $divide = document.querySelector('[data-btn-divide]')
+const $equal = document.querySelector('[data-btn-equal]')
 
 // 숫자, 연산
 const $numbers = document.querySelectorAll('[data-btn-number]')
@@ -42,14 +42,31 @@ const $operations = document.querySelectorAll('[data-btn-operation]')
 
 const cal = new Calculator($previousPreview, $currentPreview)
 
-$numbers.forEach(($numbers) => {
-    $numbers.addEventListener("click", (e) => {
+$numbers.forEach(($number) => {
+    $number.addEventListener("click", (e) => {
         cal.onPressNumber(e.target.textContent)
     })
 })
 
-$operations.forEach(($operations) => {
-    $operations.addEventListener("click", (e) => {
-        cal.onPressOperation(e.target.textContent)
+$operations.forEach(($operation) => {
+    $operation.addEventListener("click", (e) => {
+        switch($operation){
+            case $plus:
+                cal.onPressOperation("+")
+                break;
+            case $minus:
+                cal.onPressOperation("-")
+                break;
+            case $multiply:
+                cal.onPressOperation("*")
+                break;
+            case $divide:
+                cal.onPressOperation("/")
+                break;
+            case $equal:
+                break;
+            default:
+                break;
+        }
     })
 })
