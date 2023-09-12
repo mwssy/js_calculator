@@ -25,8 +25,28 @@ class Calculator{
     }
 
     onEqual(){
-        this.$previousPreview.textContent = ''
-        //this.$currentPreview.textContent = 
+        this.$previousPreview.textContent += ` ${this.$currentPreview.textContent}`
+        let $arr = (this.$previousPreview.textContent).split(" ")
+        $arr[0] = $arr[0] - 0
+        $arr[2] = $arr[2] - 0
+        let $answer = 0
+        switch($arr[1]){
+            case '+':
+                $answer = $arr[0] + $arr[2];
+                break;
+            case '-':
+                $answer = $arr[0] - $arr[2];
+                break;
+            case '*':
+                $answer = $arr[0] * $arr[2];
+                break;
+            case '/':
+                $answer = $arr[0] / $arr[2];
+                break;
+            default:
+                break;
+        }
+        this.$currentPreview.textContent = `${$answer}`
     }
 }
 
