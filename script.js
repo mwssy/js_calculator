@@ -20,7 +20,9 @@ class Calculator{
     }
 
     onPressOperation(operation){
-        this.$currentPreview.textContent += operation
+        if(operation !== "="){
+            this.$currentPreview.textContent += operation
+        }
     }
 }
 
