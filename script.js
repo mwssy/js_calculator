@@ -16,10 +16,21 @@ class Calculator{
     }
 
     onPressNumber(number){
+        // 소수점이 연속되지 않게
+        // 소수점 맨 앞에 찍히지 않게
+        if(number === "." && this.$currentPreview.textContent.length<1){
+            return
+        }
+
         this.$currentPreview.textContent += number
     }
 
     onPressOperation(operation){
+        // 연산할 수보다 연산기호 먼저 눌리지 않게
+        if(this.$currentPreview.textContent.length<1){
+            return
+        }
+
         this.$previousPreview.textContent = `${this.$currentPreview.textContent} ${operation}`
         this.$currentPreview.textContent = ''
     }
