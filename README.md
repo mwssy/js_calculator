@@ -10,5 +10,5 @@
 
 ### 2주차
 - [x] 데이터 벨리데이션 1차 추가
-- [ ] onEqual, onReset, onDelete 기능 구현
+- [x] onEqual, onReset, onDelete 기능 구현
 - [ ] 데이터 벨리데이션 2차 추가
