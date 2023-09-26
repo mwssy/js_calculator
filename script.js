@@ -105,6 +105,21 @@ class Calculator{
 
     }
 
+    onReset() {
+        this.$currentPreview.textContent = ""
+        this.$previousPreview.textContent = ""
+        this.previousOperation.textContent = ""
+        this.currentOperation.textContent = ""
+    }
+
+    onDelete() {
+        if(this.$currentPreview.textContent < 1){
+            return
+        }
+        
+        this.$currentPreview.textContent = this.$currentPreview.textContent.slice(0, -1)
+    }
+
     handlePlus() {
         return(
             Number(this.$previousPreview.textContent.split(" ")[0])
@@ -145,6 +160,10 @@ const $multiply = document.querySelector('[data-btn-multiply]')
 const $divide = document.querySelector('[data-btn-divide]')
 const $equal = document.querySelector('[data-btn-equal]')
 
+// 리셋, 삭제
+const $reset = document.querySelector('[data-btn-reset]')
+const $delete = document.querySelector('[data-btn-delete]')
+
 // 숫자, 연산
 const $numbers = document.querySelectorAll('[data-btn-number]')
 const $operations = document.querySelectorAll('[data-btn-operation]')
@@ -180,3 +199,7 @@ $operations.forEach(($operation) => {
         }
     })
 })
+
+$reset.addEventListener("click", (e) => cal.onReset())
+
+$delete.addEventListener("click",(e) => cal.onDelete())
